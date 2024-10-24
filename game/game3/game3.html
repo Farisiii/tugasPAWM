@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kartu Flash Bahasa Inggris</title>
+
+    <link href="../../assets/flash-card.ico" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" href="./game3.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    />
+
+    <script type="module" src="./game3.js" defer></script>
+  </head>
+  <body>
+    <div class="game-container">
+      <h1 class="title">Permainan Hubungan Kata</h1>
+      <div class="info-container">
+        <div class="score">Skor Tertinggi: <span id="score">0</span></div>
+        <div class="timer">Waktu: <span id="time">60</span> detik</div>
+        <button id="homeButton" class="home-button">
+          <i class="fas fa-home"></i>
+        </button>
+      </div>
+      <canvas id="gameCanvas"></canvas>
+      <div class="button-container">
+        <button id="startButton">Mulai Permainan</button>
+        <button id="checkButton">Periksa Jawaban</button>
+      </div>
+    </div>
+
+    <!-- Modal Hasil Permainan -->
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal">
+        <h2 class="modal-title">Waktu Habis!</h2>
+        <div class="modal-content">
+          <p>Skor akhir Anda:</p>
+          <div class="score-display"><span id="finalScore">0</span></div>
+          <p>
+            Kata yang cocok: <span id="matchedWords">0</span>/<span
+              id="totalWords"
+              >0</span
+            >
+          </p>
+        </div>
+        <button class="modal-button" id="playAgainButton">Main Lagi</button>
+      </div>
+    </div>
+
+    <!-- Modal Konfirmasi Keluar -->
+    <div class="exit-modal-overlay" id="exitModalOverlay">
+      <div class="exit-modal">
+        <h2 class="exit-modal-title">Keluar dari Permainan?</h2>
+        <div class="exit-modal-content">
+          <p>Apakah Anda yakin ingin keluar? Kemajuan Anda akan hilang.</p>
+        </div>
+        <div class="exit-modal-buttons">
+          <button class="exit-modal-button confirm" id="confirmExitButton">
+            Keluar
+          </button>
+          <button class="exit-modal-button cancel" id="cancelExitButton">
+            Batal
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kartu Flash Bahasa Inggris</title>
+
+    <link href="../../assets/flash-card.ico" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" href="./game2.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    />
+
+    <script type="module" src="./game2.js" defer></script>
+  </head>
+  <body>
+    <div class="game-container">
+      <div class="header">
+        <div class="score">Skor: <span id="scoreDisplay">0</span></div>
+        <button id="exitButton" class="exit-button">
+          <i class="fas fa-sign-out-alt"></i> Keluar
+        </button>
+      </div>
+      <div id="paragraph" class="paragraph"></div>
+      <div class="word-bank" id="wordBank"></div>
+      <div id="feedback" class="feedback"></div>
+      <div class="hint-text">
+        Klik kata yang salah untuk mengembalikannya ke bank kata
+      </div>
+      <div class="controls">
+        <button id="checkButton">Periksa Jawaban</button>
+        <button id="nextButton">Paragraf Berikutnya</button>
+      </div>
+    </div>
+  </body>
+</html>

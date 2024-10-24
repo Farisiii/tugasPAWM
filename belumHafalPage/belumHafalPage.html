@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>English Flashcard</title>
+
+    <link href="../assets/flash-card.ico" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" href="./belumHafalPage.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    />
+
+    <script src="./belumHafalPage.js" defer></script>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-logo">FlashCard</div>
+      <div class="container-nav">
+        <ul class="nav-links" id="nav-links">
+          <li>
+            <a href="../homePage/homePage.html"
+              ><i class="fas fa-home"></i> Home</a
+            >
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-book"></i> Belum Hafal</a>
+          </li>
+          <li>
+            <a href="../editPage/editPage.html"
+              ><i class="fas fa-edit"></i> Edit</a
+            >
+          </li>
+          <li>
+            <a href="../loginPage/loginPage.html"
+              ><i class="fas fa-sign-out-alt"></i> Logout</a
+            >
+          </li>
+        </ul>
+      </div>
+      <button class="burger" id="burger">
+        <i class="fas fa-bars"></i>
+      </button>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <button class="close-sidebar" id="close-sidebar">
+        <i class="fas fa-times"></i>
+      </button>
+      <ul>
+        <li>
+          <a href="../homePage/homePage.html"
+            ><i class="fas fa-home"></i> Home</a
+          >
+        </li>
+        <li>
+          <a href="#"><i class="fas fa-book"></i> Belum Hafal</a>
+        </li>
+        <li>
+          <a href="../editPage/editPage.html"
+            ><i class="fas fa-edit"></i> Edit</a
+          >
+        </li>
+        <li>
+          <a href="../loginPage/loginPage.html"
+            ><i class="fas fa-sign-out-alt"></i> Logout</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="header">
+        <h1>Kata Belum Hafal</h1>
+      </div>
+
+      <div class="content">
+        <div class="column">
+          <h2>Bahasa Indonesia</h2>
+          <div class="word-list" id="indonesianWords">
+            <!-- Words will be inserted here by JavaScript -->
+          </div>
+        </div>
+
+        <div class="column">
+          <h2>English Language</h2>
+          <div class="word-list" id="englishWords">
+            <!-- Words will be inserted here by JavaScript -->
+          </div>
+        </div>
+      </div>
+
+      <div class="btn-container">
+        <button class="play-btn" onclick="startGame()">Mulai Bermain</button>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,177 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+  color: #2d3748;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  flex-grow: 1;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem 1rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #2d3748;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  opacity: 0.8;
+  color: #4a5568;
+}
+
+.choices {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.choice-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  padding: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: center;
+  text-decoration: none;
+  color: #2d3748;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.choice-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.15);
+  background: #ffffff;
+}
+
+.choice-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.choice-icon img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.choice-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #2d3748;
+  font-weight: 600;
+  text-align: center;
+}
+
+.choice-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #4a5568;
+  text-align: center;
+}
+
+.exit-button {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  text-decoration: none;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+  z-index: 1000;
+}
+
+.exit-button svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: #4a5568;
+  transition: fill 0.2s ease;
+}
+
+.exit-button:hover {
+  background-color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.exit-button:hover svg {
+  fill: #2d3748;
+}
+
+.exit-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .choice-card {
+    padding: 1.5rem;
+  }
+
+  .choices {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .choice-icon img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .choice-title {
+    font-size: 1.25rem;
+  }
+
+  .choice-description {
+    font-size: 0.9rem;
+  }
+
+  .exit-button {
+    top: 1rem;
+    right: 1rem;
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .exit-button svg {
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+}

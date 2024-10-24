@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>English Flashcard</title>
+    <link href="../assets/flash-card.ico" rel="icon" type="image/x-icon" />
+
+    <link rel="stylesheet" href="./homePage.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    />
+
+    <script src="./homePage.js" defer></script>
+  </head>
+  <body>
+    <nav class="navbar" id="navbar">
+      <div class="nav-logo">FlashCard</div>
+      <div class="container-nav">
+        <ul class="nav-links" id="nav-links">
+          <li>
+            <a href="#"><i class="fas fa-home"></i> Home</a>
+          </li>
+          <li>
+            <a href="../belumHafalPage/belumHafalPage.html"
+              ><i class="fas fa-book"></i> Belum Hafal</a
+            >
+          </li>
+          <li>
+            <a href="../editPage/editPage.html"
+              ><i class="fas fa-edit"></i> Edit</a
+            >
+          </li>
+          <li>
+            <a href="../loginPage/loginPage.html"
+              ><i class="fas fa-sign-out-alt"></i> Logout</a
+            >
+          </li>
+        </ul>
+      </div>
+      <button class="burger" id="burger">
+        <i class="fas fa-bars"></i>
+      </button>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <button class="close-sidebar" id="close-sidebar">
+        <i class="fas fa-times"></i>
+      </button>
+      <ul>
+        <li>
+          <a href="#"><i class="fas fa-home"></i> Home</a>
+        </li>
+        <li>
+          <a href="../belumHafalPage/belumHafalPage.html"><i class="fas fa-book"></i> Belum Hafal</a>
+        </li>
+        <li>
+          <a href="../editPage/editPage.html"><i class="fas fa-edit"></i> Edit</a>
+        </li>
+        <li>
+          <a href="../loginPage/loginPage.html"
+            ><i class="fas fa-sign-out-alt"></i> Logout</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <main class="main-content">
+        <div class="section-header">
+          <h1>Set yang dimiliki</h1>
+          <button class="add-button" id="add-set-button">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M12 6V18M6 12H18"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+            Tambah Set
+          </button>
+        </div>
+
+        <div class="sets-grid"></div>
+      </main>
+    </div>
+
+    <!-- Add Set Modal -->
+    <div class="modal" id="add-set-modal">
+      <div class="modal-content">
+        <h2>Tambah Set Baru</h2>
+        <form id="add-set-form">
+          <div class="form-group">
+            <label for="set-name">Nama Set:</label>
+            <input type="text" id="set-name" name="set-name" required />
+          </div>
+          <div class="form-group">
+            <label for="study-duration">Lama Menghafal (hari):</label>
+            <input
+              type="number"
+              id="study-duration"
+              name="study-duration"
+              required
+              min="1"
+            />
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="submit-button">Tambah</button>
+            <button type="button" class="cancel-button" id="cancel-add-set">
+              Batal
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- flash card elemen -->
+    <div class="flashcard-container">
+      <div class="flashcard">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <p class="front-card-text">Front Text</p>
+          </div>
+          <div class="flashcard-back">
+            <p class="back-card-text">Back Text</p>
+          </div>
+        </div>
+      </div>
+      <div class="button-container">
+        <button class="control-btn hafal-btn">Hafal</button>
+        <button class="control-btn belum-btn">Belum Hafal</button>
+      </div>
+    </div>
+
+    <!-- delete elemen -->
+    <div class="modal" id="delete-set-modal">
+      <div class="modal-content">
+        <h2>Hapus Set</h2>
+        <p>Apakah Anda yakin ingin menghapus set ini?</p>
+        <div class="form-actions">
+          <button type="button" class="delete-confirm-button">Hapus</button>
+          <button type="button" class="cancel-button" id="cancel-delete">
+            Batal
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

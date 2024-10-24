@@ -1,0 +1,375 @@
+:root {
+  --primary-blue: #2196f3;
+  --primary-green: #4caf50;
+  --primary-red: #e74c3c;
+  --hover-green: #45a049;
+  --background-grey: #f0f2f5;
+  --border-grey: #e0e0e0;
+  --text-dark: #1a1a1a;
+  --text-grey: #333;
+  --white: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: var(--background-grey);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  padding: clamp(1rem, 3vw, 2rem);
+}
+
+.game-container {
+  text-align: center;
+  width: 100%;
+  max-width: 800px;
+  background: var(--white);
+  padding: clamp(1rem, 4vw, 2rem);
+  border-radius: clamp(0.5rem, 2vw, 1rem);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: filter 0.3s ease;
+}
+
+.game-container.blur {
+  filter: blur(5px);
+  pointer-events: none;
+}
+
+.title {
+  font-size: clamp(1.25rem, 4vw, 2rem);
+  color: var(--text-dark);
+  margin-bottom: clamp(1rem, 3vw, 1.5rem);
+}
+
+canvas {
+  background: var(--white);
+  border-radius: clamp(0.5rem, 2vw, 0.75rem);
+  border: 2px solid var(--border-grey);
+  margin: clamp(1rem, 3vw, 1.25rem) 0;
+  max-width: 100%;
+  height: auto;
+}
+
+.info-container {
+  display: flex;
+  justify-content: center;
+  gap: clamp(0.5rem, 2vw, 2rem);
+  margin-bottom: clamp(1rem, 3vw, 1.5rem);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.score,
+.timer {
+  font-size: clamp(0.875rem, 2.5vw, 1.25rem);
+  color: var(--text-grey);
+  background: var(--background-grey);
+  padding: clamp(0.5rem, 1.5vw, 0.75rem) clamp(0.75rem, 2vw, 1.5rem);
+  border-radius: clamp(0.25rem, 1vw, 0.5rem);
+  min-width: clamp(100px, 20vw, 150px);
+  border: 1px solid var(--border-grey);
+}
+
+.button-container {
+  display: flex;
+  gap: clamp(0.5rem, 2vw, 1rem);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+button {
+  padding: clamp(0.5rem, 1.5vw, 0.75rem) clamp(0.75rem, 2vw, 1.5rem);
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  color: var(--white);
+  border: none;
+  border-radius: clamp(0.25rem, 1vw, 0.5rem);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  min-width: clamp(100px, 20vw, 140px);
+}
+
+#startButton {
+  background: var(--primary-green);
+}
+
+#startButton:hover {
+  background: var(--hover-green);
+  transform: translateY(-1px);
+}
+
+#checkButton {
+  background: var(--primary-blue);
+}
+
+#checkButton:hover {
+  background: #1976d2;
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+/* Home Button Styles */
+.home-button {
+  background: var(--primary-red);
+  color: var(--white);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+  min-width: unset;
+}
+
+.home-button:hover {
+  background: #c04032;
+  transform: translateY(-1px);
+}
+
+.home-button i {
+  font-size: 1.2rem;
+}
+
+/* Game Result Modal Styles */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  padding: clamp(1rem, 3vw, 2rem);
+}
+
+.modal-overlay.visible {
+  display: flex;
+  opacity: 1;
+}
+
+.modal {
+  background: var(--white);
+  padding: clamp(1.5rem, 4vw, 2rem);
+  border-radius: clamp(0.5rem, 2vw, 1rem);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  max-width: min(90vw, 400px);
+  width: 100%;
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+}
+
+.modal-overlay.visible .modal {
+  transform: translateY(0);
+}
+
+.modal-title {
+  font-size: clamp(1.25rem, 3.5vw, 1.5rem);
+  color: var(--text-dark);
+  margin-bottom: clamp(0.75rem, 2vw, 1rem);
+}
+
+.modal-content {
+  margin-bottom: clamp(1rem, 3vw, 1.5rem);
+}
+
+.score-display {
+  font-size: clamp(2rem, 6vw, 2.5rem);
+  color: var(--primary-blue);
+  font-weight: bold;
+  margin: clamp(0.75rem, 2vw, 1rem) 0;
+}
+
+.modal-button {
+  background: var(--primary-green);
+  color: var(--white);
+  padding: clamp(0.5rem, 1.5vw, 0.75rem) clamp(0.75rem, 2vw, 1.5rem);
+  border: none;
+  border-radius: clamp(0.25rem, 1vw, 0.5rem);
+  cursor: pointer;
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  transition: all 0.2s ease;
+  width: 100%;
+  max-width: 200px;
+}
+
+.modal-button:hover {
+  background: var(--hover-green);
+  transform: translateY(-1px);
+}
+
+/* Exit Modal Styles */
+.exit-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.exit-modal-overlay.visible {
+  display: flex;
+  opacity: 1;
+}
+
+.exit-modal {
+  background: var(--white);
+  padding: clamp(1.5rem, 4vw, 2rem);
+  border-radius: clamp(0.5rem, 2vw, 1rem);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  max-width: min(90vw, 400px);
+  width: 100%;
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+}
+
+.exit-modal-overlay.visible .exit-modal {
+  transform: translateY(0);
+}
+
+.exit-modal-title {
+  font-size: clamp(1.25rem, 3.5vw, 1.5rem);
+  color: var(--text-dark);
+  margin-bottom: clamp(0.75rem, 2vw, 1rem);
+}
+
+.exit-modal-content {
+  margin-bottom: clamp(1rem, 3vw, 1.5rem);
+  color: var(--text-grey);
+}
+
+.exit-modal-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.exit-modal-button {
+  padding: clamp(0.5rem, 1.5vw, 0.75rem) clamp(0.75rem, 2vw, 1.5rem);
+  border-radius: clamp(0.25rem, 1vw, 0.5rem);
+  cursor: pointer;
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  transition: all 0.2s ease;
+  border: none;
+  min-width: 100px;
+}
+
+.exit-modal-button.confirm {
+  background: var(--primary-blue);
+  color: var(--white);
+}
+
+.exit-modal-button.cancel {
+  background: var(--border-grey);
+  color: var(--text-grey);
+}
+
+.exit-modal-button:hover {
+  transform: translateY(-1px);
+}
+
+.exit-modal-button.confirm:hover {
+  background: #1976d2;
+}
+
+.exit-modal-button.cancel:hover {
+  background: #d0d0d0;
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) {
+  button:hover {
+    transform: none;
+  }
+
+  .modal-button:hover {
+    transform: none;
+  }
+
+  .exit-modal-button:hover {
+    transform: none;
+  }
+}
+
+/* Small Screen Optimizations */
+@media (max-width: 480px) {
+  .info-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .score,
+  .timer {
+    text-align: center;
+  }
+
+  .button-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  button {
+    width: 100%;
+    max-width: none;
+  }
+
+  .exit-modal-buttons {
+    flex-direction: column;
+  }
+
+  .exit-modal-button {
+    width: 100%;
+  }
+
+  .home-button {
+    width: 36px;
+    height: 36px;
+    align-self: center;
+  }
+}
+
+/* Landscape Mode Optimizations */
+@media (max-height: 600px) and (orientation: landscape) {
+  .game-container {
+    padding: 0.75rem;
+  }
+
+  .title {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    margin-bottom: 0.5rem;
+  }
+
+  .info-container {
+    margin-bottom: 0.5rem;
+  }
+
+  canvas {
+    margin: 0.5rem 0;
+  }
+
+  .button-container {
+    gap: 0.5rem;
+  }
+}

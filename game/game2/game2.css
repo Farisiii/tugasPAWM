@@ -1,0 +1,276 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+  padding: 20px;
+  line-height: 1.6;
+}
+
+.game-container {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  width: 100%;
+  margin: 20px;
+}
+
+.paragraph {
+  font-size: 1.2em;
+  line-height: 2;
+  margin-bottom: 30px;
+  text-align: justify;
+  color: #2c3e50;
+}
+
+.blank-space {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+  height: 35px;
+  background: #e8f4f8;
+  border: 2px dashed #4a90e2;
+  border-radius: 5px;
+  margin: 0 5px;
+  vertical-align: middle;
+  padding: 0 10px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.blank-space.filled {
+  background: #e8f5e9;
+  border: 2px solid #43a047;
+}
+
+.blank-space.incorrect {
+  background: #ffebee;
+  border: 2px solid #e53935;
+  animation: shake 0.5s;
+}
+
+.blank-space.incorrect:hover {
+  background: #ffcdd2;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+.word-bank {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  min-height: 60px;
+}
+
+.word {
+  background: #4a90e2;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: move;
+  user-select: none;
+  transition: transform 0.2s;
+  font-size: 1em;
+}
+
+.word:hover {
+  transform: scale(1.05);
+}
+
+.word.dragging {
+  opacity: 0.5;
+}
+
+.controls {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background: #4a90e2;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-size: 1em;
+}
+
+button:hover {
+  background: #357abd;
+}
+
+.score {
+  font-size: 1.2em;
+  color: #4a90e2;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.feedback {
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.feedback.visible {
+  opacity: 1;
+}
+
+.feedback.success {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.feedback.error {
+  background: #fbe9e7;
+  color: #c62828;
+}
+
+.hint-text {
+  font-size: 0.9em;
+  color: #666;
+  text-align: center;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.exit-button {
+  background-color: #e74c3c;
+  padding: 8px 15px;
+  font-size: 0.9em;
+  transition: background-color 0.3s;
+}
+
+.exit-button:hover {
+  background-color: #c0392b;
+}
+
+.exit-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.exit-dialog {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 90%;
+  width: 300px;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.exit-dialog h3 {
+  margin: 0 0 15px 0;
+  color: #2c3e50;
+}
+
+.exit-dialog p {
+  margin: 10px 0;
+  color: #34495e;
+}
+
+.exit-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.exit-buttons button {
+  min-width: 80px;
+  padding: 8px 16px;
+}
+
+.exit-buttons .exit-yes {
+  background-color: #e74c3c;
+}
+
+.exit-buttons .exit-yes:hover {
+  background-color: #c0392b;
+}
+
+.exit-buttons .exit-no {
+  background-color: #95a5a6;
+}
+
+.exit-buttons .exit-no:hover {
+  background-color: #7f8c8d;
+}
+
+@media (max-width: 480px) {
+  .header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .exit-button {
+    width: 100%;
+  }
+
+  .exit-dialog {
+    width: 280px;
+    padding: 20px;
+  }
+}

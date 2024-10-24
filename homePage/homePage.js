@@ -109,9 +109,9 @@ closeSidebar.addEventListener('click', () => {
 // Close sidebar when clicking outside
 document.addEventListener('click', (event) => {
   if (
+    sidebar.classList.contains('open') &&
     !sidebar.contains(event.target) &&
-    !burger.contains(event.target) &&
-    sidebar.classList.contains('open')
+    !burger.contains(event.target)
   ) {
     sidebar.classList.remove('open')
   }
@@ -119,7 +119,7 @@ document.addEventListener('click', (event) => {
 
 // Close sidebar when resizing to larger screen
 window.addEventListener('resize', () => {
-  if (window.innerWidth > 768 && sidebar.classList.contains('open')) {
+  if (window.innerWidth > 768) {
     sidebar.classList.remove('open')
   }
 })
